@@ -1,6 +1,10 @@
 import { PropsWithChildren, useCallback } from "react";
 import { smoother } from "./Navbar";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./styles/Landing.css";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Landing = ({ children }: PropsWithChildren) => {
   const scrollTo = useCallback((section: string) => {
@@ -8,9 +12,10 @@ const Landing = ({ children }: PropsWithChildren) => {
     if (!el) return;
     if (smoother && window.innerWidth > 1024) {
       smoother.paused(false);
-      smoother.scrollTo(`#${section}`, true, "top 150px");
+      smoother.scrollTo(el, true, "top 150px");
     } else {
-      el.scrollIntoView({ behavior: "smooth" });
+      const y = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   }, []);
 
@@ -26,12 +31,12 @@ const Landing = ({ children }: PropsWithChildren) => {
               <span>MANDOLA</span>
             </h1>
             <div className="landing-cta-inline">
-              <a href="#work" className="cta-btn cta-primary" data-cursor="disable" onClick={(e) => { e.preventDefault(); scrollTo("work"); }}>
+              <button className="cta-btn cta-primary" data-cursor="disable" onClick={() => scrollTo("work")}>
                 View Projects
-              </a>
-              <a href="#contact" className="cta-btn cta-secondary" data-cursor="disable" onClick={(e) => { e.preventDefault(); scrollTo("contact"); }}>
+              </button>
+              <button className="cta-btn cta-secondary" data-cursor="disable" onClick={() => scrollTo("contact")}>
                 Contact Me
-              </a>
+              </button>
             </div>
           </div>
           <div className="landing-info">
