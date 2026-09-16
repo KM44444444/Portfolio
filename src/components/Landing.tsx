@@ -1,7 +1,19 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useCallback } from "react";
+import { smoother } from "./Navbar";
 import "./styles/Landing.css";
 
 const Landing = ({ children }: PropsWithChildren) => {
+  const scrollTo = useCallback((section: string) => {
+    const el = document.getElementById(section);
+    if (!el) return;
+    if (smoother && window.innerWidth > 1024) {
+      smoother.paused(false);
+      smoother.scrollTo(`#${section}`, true, "top 150px");
+    } else {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
+
   return (
     <>
       <div className="landing-section" id="landingDiv">
@@ -14,10 +26,10 @@ const Landing = ({ children }: PropsWithChildren) => {
               <span>MANDOLA</span>
             </h1>
             <div className="landing-cta-inline">
-              <a href="#work" data-href="#work" className="cta-btn cta-primary" data-cursor="disable">
+              <a href="#work" className="cta-btn cta-primary" data-cursor="disable" onClick={(e) => { e.preventDefault(); scrollTo("work"); }}>
                 View Projects
               </a>
-              <a href="#contact" data-href="#contact" className="cta-btn cta-secondary" data-cursor="disable">
+              <a href="#contact" className="cta-btn cta-secondary" data-cursor="disable" onClick={(e) => { e.preventDefault(); scrollTo("contact"); }}>
                 Contact Me
               </a>
             </div>
