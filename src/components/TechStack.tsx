@@ -11,38 +11,100 @@ import {
   RapierRigidBody,
 } from "@react-three/rapier";
 
-const textureLoader = new THREE.TextureLoader();
-const imageUrls = [
-  "/images/react.webp",
-  "/images/javascript.webp",
-  "/images/typescript.webp",
-  "/images/node.webp",
-  "/images/express.webp",
+const techStack = [
+  { name: "HTML", color: "#E34F26", short: "H" },
+  { name: "CSS", color: "#1572B6", short: "C" },
+  { name: "JavaScript", color: "#F7DF1E", short: "JS" },
+  { name: "TypeScript", color: "#3178C6", short: "TS" },
+  { name: "React", color: "#61DAFB", short: "R" },
+  { name: "Tailwind", color: "#06B6D4", short: "TW" },
+  { name: "Next.js", color: "#000000", short: "N" },
+  { name: "Node.js", color: "#339933", short: "Node" },
+  { name: "Express", color: "#000000", short: "Ex" },
+  { name: "Java", color: "#ED8B00", short: "J" },
+  { name: "Python", color: "#3776AB", short: "Py" },
+  { name: "MySQL", color: "#4479A1", short: "My" },
+  { name: "MongoDB", color: "#47A248", short: "M" },
+  { name: "Git", color: "#F05032", short: "G" },
+  { name: "Docker", color: "#2496ED", short: "D" },
+  { name: "AWS", color: "#FF9900", short: "AWS" },
+  { name: "Pandas", color: "#150458", short: "Pd" },
+  { name: "AI/ML", color: "#FF6F00", short: "AI" },
+  { name: "Data Science", color: "#0277BD", short: "DS" },
+  { name: "PCM", color: "#7B1FA2", short: "PCM" },
+  { name: "Science", color: "#2E7D32", short: "Sci" },
 ];
-const textures = imageUrls.map((url) => textureLoader.load(url));
+
+function createCanvasTexture(text: string, bgColor: string): THREE.CanvasTexture {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 512;
+  const ctx = canvas.getContext("2d")!;
+
+  const gradient = ctx.createRadialGradient(256, 256, 0, 256, 256, 256);
+  gradient.addColorStop(0, bgColor);
+  gradient.addColorStop(1, adjustColor(bgColor, -40));
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 512, 512);
+
+  ctx.fillStyle = "white";
+  ctx.font = "bold 120px Arial, sans-serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.shadowColor = "rgba(0,0,0,0.3)";
+  ctx.shadowBlur = 10;
+  ctx.fillText(text, 256, 256);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.needsUpdate = true;
+  return texture;
+}
+
+function adjustColor(color: string, amount: number): string {
+  const hex = color.replace("#", "");
+  const r = Math.max(0, Math.min(255, parseInt(hex.substring(0, 2), 16) + amount));
+  const g = Math.max(0, Math.min(255, parseInt(hex.substring(2, 4), 16) + amount));
+  const b = Math.max(0, Math.min(255, parseInt(hex.substring(4, 6), 16) + amount));
+  return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+}
 
 const sphereGeometry = new THREE.SphereGeometry(1, 28, 28);
 
 const spheres = [...Array(25)].map(() => ({
   scale: [0.7, 1, 0.8, 1, 1][Math.floor(Math.random() * 5)],
+  techIndex: Math.floor(Math.random() * techStack.length),
 }));
 
 type SphereProps = {
   vec?: THREE.Vector3;
   scale: number;
+  techIndex: number;
   r?: typeof THREE.MathUtils.randFloatSpread;
-  material: THREE.MeshPhysicalMaterial;
   isActive: boolean;
 };
 
 function SphereGeo({
   vec = new THREE.Vector3(),
   scale,
+  techIndex,
   r = THREE.MathUtils.randFloatSpread,
-  material,
   isActive,
 }: SphereProps) {
   const api = useRef<RapierRigidBody | null>(null);
+
+  const material = useMemo(() => {
+    const tech = techStack[techIndex];
+    const texture = createCanvasTexture(tech.short, tech.color);
+    return new THREE.MeshPhysicalMaterial({
+      map: texture,
+      emissive: new THREE.Color(tech.color),
+      emissiveMap: texture,
+      emissiveIntensity: 0.3,
+      metalness: 0.5,
+      roughness: 1,
+      clearcoat: 0.1,
+    });
+  }, [techIndex]);
 
   useFrame((_state, delta) => {
     if (!isActive) return;
@@ -148,24 +210,10 @@ const TechStack = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  const materials = useMemo(() => {
-    return textures.map(
-      (texture) =>
-        new THREE.MeshPhysicalMaterial({
-          map: texture,
-          emissive: "#ffffff",
-          emissiveMap: texture,
-          emissiveIntensity: 0.3,
-          metalness: 0.5,
-          roughness: 1,
-          clearcoat: 0.1,
-        })
-    );
-  }, []);
 
   return (
     <div className="techstack">
-      <h2> My Techstack</h2>
+      <h2>Techstack</h2>
 
       <Canvas
         shadows
@@ -190,7 +238,6 @@ const TechStack = () => {
             <SphereGeo
               key={i}
               {...props}
-              material={materials[Math.floor(Math.random() * materials.length)]}
               isActive={isActive}
             />
           ))}

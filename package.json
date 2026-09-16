@@ -1,5 +1,5 @@
 {
-  "name": "jatin-prahari-portfolio",
+  "name": "kshitiz-mandola-portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -37,6 +37,6 @@
     "globals": "^15.9.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
-    "vite": "^5.4.1"
+    "vite": "^8.3.0"
   }
 }

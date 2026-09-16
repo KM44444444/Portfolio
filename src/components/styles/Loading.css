@@ -138,7 +138,7 @@
   width: 15px;
   height: 25px;
   background-color: white;
-  animation: blink 1s linear infinite;
+  animation: none;
 }
 .loading-icon {
   transform: scale(0);

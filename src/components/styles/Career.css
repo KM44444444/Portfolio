@@ -103,7 +103,7 @@
   border-radius: 50px;
   box-shadow: 0px 0px 5px 2px #d29bff, 0px 0px 15px 8px #d097ff,
     0px 0px 110px 20px #f2c0ff;
-  animation: timeline 0.8s linear infinite forwards;
+  animation: none;
 }
 
 @keyframes timeline {

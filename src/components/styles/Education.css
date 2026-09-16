@@ -38,6 +38,21 @@
   letter-spacing: 2px;
 }
 
+.cert-section-title {
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: 400;
+  text-align: center;
+  background: linear-gradient(0deg, #7f40ff, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin-top: 50px;
+  margin-bottom: 60px;
+  width: 100%;
+}
+
 .education-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -85,6 +100,14 @@
   color: #ccc;
 }
 
+.education-description {
+  font-size: 13px;
+  font-weight: 300;
+  margin: 16px 0 0 0;
+  color: #999;
+  line-height: 1.5;
+}
+
 .education-meta {
   display: flex;
   justify-content: space-between;
@@ -104,6 +127,61 @@
 
 .cert-card {
   border-color: rgba(194, 164, 255, 0.2);
+}
+
+.cert-flip-card {
+  perspective: 1000px;
+  height: 300px;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.cert-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.cert-flip-card:hover .cert-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.cert-flip-front,
+.cert-flip-back {
+  backface-visibility: hidden;
+  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cert-flip-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cert-flip-back {
+  transform: rotateY(180deg);
+  overflow: hidden;
+}
+
+.cert-flip-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
 }
 
 .skills-tags-container {
@@ -140,12 +218,34 @@
 
 .language-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px 16px;
+  gap: 16px;
+  padding: 12px 16px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
+  border-radius: 12px;
+}
+
+.language-ball {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.language-symbol {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
+
+.language-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .language-name {
@@ -154,7 +254,7 @@
 }
 
 .language-level {
-  font-size: 13px;
+  font-size: 12px;
   color: #888;
 }
 
@@ -165,6 +265,10 @@
   }
 
   .education-section h2 {
+    font-size: 50px;
+    line-height: 50px;
+  }
+  .cert-section-title {
     font-size: 50px;
     line-height: 50px;
   }
@@ -185,10 +289,20 @@
   .section-subtitle {
     font-size: 18px;
   }
+  .cert-section-title {
+    font-size: 40px;
+    line-height: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
 }
 
 @media only screen and (min-width: 1600px) {
   .education-section h2 {
+    font-size: 80px;
+    line-height: 80px;
+  }
+  .cert-section-title {
     font-size: 80px;
     line-height: 80px;
   }

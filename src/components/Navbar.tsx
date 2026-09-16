@@ -23,28 +23,39 @@ const Navbar = () => {
     smoother.scrollTop(0);
     smoother.paused(true);
 
-    const links = document.querySelectorAll(".header ul a");
-    links.forEach((elem) => {
-      const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          const elem = e.currentTarget as HTMLAnchorElement;
-          const section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
+    const handleLinkClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const link = target.closest("a[data-href]") as HTMLAnchorElement;
+      if (link && window.innerWidth > 1024) {
+        e.preventDefault();
+        const section = link.getAttribute("data-href");
+        if (section) {
+          smoother.paused(false);
+          smoother.scrollTo(section, true, "top 150px");
         }
-      });
-    });
-    window.addEventListener("resize", () => {
+      }
+    };
+    document.addEventListener("click", handleLinkClick, true);
+
+    const resizeHandler = () => {
       ScrollSmoother.refresh(true);
-    });
+    };
+    window.addEventListener("resize", resizeHandler);
+    return () => {
+      document.removeEventListener("click", handleLinkClick, true);
+      window.removeEventListener("resize", resizeHandler);
+    };
   }, []);
+
   return (
     <>
       <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          JP
-        </a>
+        <div className="navbar-left">
+          <a href="/#" className="navbar-title" data-cursor="disable">
+            <img src="/images/dp.jpg" alt="Kshitiz" className="navbar-dp" />
+            KM
+          </a>
+        </div>
         <ul>
           <li>
             <a data-href="#about" href="#about">
@@ -52,8 +63,8 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a data-href="#skills" href="#skills">
-              <HoverLinks text="SKILLS" />
+            <a data-href="#education" href="#education">
+              <HoverLinks text="EDUCATION" />
             </a>
           </li>
           <li>
@@ -62,20 +73,23 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a data-href="#work" href="#work">
-              <HoverLinks text="PROJECTS" />
+            <a data-href="#certifications" href="#certifications">
+              <HoverLinks text="CERTIFICATIONS" />
             </a>
           </li>
           <li>
-            <a data-href="#contact" href="#contact">
-              <HoverLinks text="CONTACT" />
+            <a data-href="#achievements" href="#achievements">
+              <HoverLinks text="ACHIEVEMENTS" />
+            </a>
+          </li>
+          <li>
+            <a data-href="#coding-profiles" href="#coding-profiles">
+              <HoverLinks text="CODING" />
             </a>
           </li>
         </ul>
       </div>
 
-      <div className="landing-circle1"></div>
-      <div className="landing-circle2"></div>
       <div className="nav-fade"></div>
     </>
   );

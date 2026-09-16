@@ -5,19 +5,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const skillCategories = [
   {
     title: "Languages",
-    tags: ["JavaScript", "TypeScript", "Python"],
+    tags: ["Java", "Python"],
   },
   {
     title: "Frontend",
-    tags: ["React", "React Native", "HTML5", "CSS3", "Tailwind CSS", "Vite", "Expo"],
+    tags: ["HTML", "Tailwind CSS", "JavaScript", "TypeScript", "React", "Next.js"],
   },
   {
     title: "Backend",
-    tags: ["Node.js", "Express.js", "REST APIs"],
+    tags: ["Node.js", "Express.js", "REST APIs", "JWT"],
   },
   {
     title: "Database",
-    tags: ["PostgreSQL", "Supabase", "Drizzle ORM"],
+    tags: ["SQL", "Supabase"],
   },
   {
     title: "Tools & Platforms",
@@ -25,7 +25,7 @@ const skillCategories = [
   },
   {
     title: "AI & Data",
-    tags: ["AI/LLM API Integration", "Pandas"],
+    tags: ["AI/ML Integration", "Pandas"],
   },
 ];
 
@@ -55,9 +55,9 @@ const WhatIDo = () => {
     <div className="whatIDO" id="skills">
       <div className="what-box">
         <h2 className="title">
-          T<span className="hat-h2">ECH</span>
+          <div>MY</div>
           <div>
-            S<span className="do-h2">KILLS</span>
+            T<span className="hat-h2">ECH</span>
           </div>
         </h2>
       </div>

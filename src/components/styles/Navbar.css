@@ -3,8 +3,8 @@
   max-width: var(--cMaxWidth);
   width: var(--cWidth);
   justify-content: space-between;
+  align-items: center;
   padding: 20px 0px;
-  margin-bottom: -100px;
   box-sizing: border-box;
   position: fixed;
   left: 50%;
@@ -30,12 +30,56 @@
   font-weight: 600;
   cursor: pointer;
 }
+.header ul a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
 
 .navbar-title {
   font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
 }
+
+.navbar-dp {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accentColor);
+}
+
+.navbar-certificates {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.navbar-certificates:hover {
+  color: var(--accentColor);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 @media only screen and (min-width: 500px) {
   .header {
     padding: 20px 0px;
@@ -51,6 +95,9 @@
   .navbar-title {
     font-size: 16px;
   }
+  .navbar-certificates {
+    font-size: 14px;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -61,8 +108,11 @@
     column-gap: 80px;
     font-size: 16px;
   }
-
   .navbar-title {
     font-size: 18px;
+  }
+  .navbar-certificates {
+    font-size: 16px;
+    letter-spacing: 2px;
   }
 }

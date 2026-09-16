@@ -7,7 +7,7 @@
   opacity: 1;
   height: auto;
   margin: auto;
-  padding: 80px 0px 120px;
+  padding: 40px 0px 0px;
 }
 
 .achievements-section h2 {
@@ -31,10 +31,11 @@
 
 .achievements-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 900px;
+  margin-bottom: 0px;
 }
 
 .achievement-card {
@@ -52,6 +53,61 @@
   border-color: rgba(194, 164, 255, 0.3);
   background: rgba(255, 255, 255, 0.05);
   transform: translateY(-4px);
+}
+
+.achievement-card-flip {
+  perspective: 1000px;
+  height: 300px;
+}
+
+.achievement-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.achievement-card-flip:hover .achievement-card-inner {
+  transform: rotateY(180deg);
+}
+
+.achievement-card-front,
+.achievement-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.achievement-card-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+  gap: 8px;
+}
+
+.achievement-card-back {
+  transform: rotateY(180deg);
+  overflow: hidden;
+}
+
+.achievement-card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-hint {
+  font-size: 12px;
+  color: var(--accentColor);
+  opacity: 0.7;
 }
 
 .achievement-icon {
@@ -96,6 +152,137 @@
   max-width: 600px;
 }
 
+.leetcode-title {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--accentColor);
+  margin-top: 0px;
+  margin-bottom: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.leetcode-card {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 24px 28px;
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s ease;
+}
+
+.leetcode-card:hover {
+  border-color: rgba(194, 164, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-4px);
+}
+
+.leetcode-card-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.leetcode-icon {
+  color: var(--accentColor);
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(194, 164, 255, 0.1);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.leetcode-info {
+  flex: 1;
+}
+
+.leetcode-info h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.leetcode-info p {
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 6px 0;
+}
+
+.leetcode-username {
+  font-size: 14px;
+  color: var(--accentColor);
+  font-weight: 500;
+}
+
+.leetcode-arrow {
+  font-size: 24px;
+  color: #888;
+  transition: 0.3s;
+}
+
+.leetcode-card:hover .leetcode-arrow {
+  color: var(--accentColor);
+  transform: translateX(4px);
+}
+
+.stats-heading {
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 220px;
+  margin-bottom: 24px;
+  background: linear-gradient(0deg, #7f40ff, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.stats-row {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 0px;
+}
+
+.stats-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.github-graph-container {
+  width: 100%;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.github-graph {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media only screen and (max-width: 900px) {
+  .stats-row {
+    flex-direction: column;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .achievements-grid {
     grid-template-columns: 1fr;
@@ -105,6 +292,10 @@
 
 @media only screen and (max-width: 900px) {
   .achievements-section h2 {
+    font-size: 50px;
+    line-height: 50px;
+  }
+  .stats-heading {
     font-size: 50px;
     line-height: 50px;
   }
@@ -121,10 +312,20 @@
     margin-top: 20px;
     margin-bottom: 40px;
   }
+  .stats-heading {
+    font-size: 40px;
+    line-height: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
 }
 
 @media only screen and (min-width: 1600px) {
   .achievements-section h2 {
+    font-size: 80px;
+    line-height: 80px;
+  }
+  .stats-heading {
     font-size: 80px;
     line-height: 80px;
   }

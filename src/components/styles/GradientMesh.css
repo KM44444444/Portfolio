@@ -1,0 +1,118 @@
+.gradient-mesh {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+  background-color: #0b080c;
+}
+
+.mesh-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+}
+
+.blob-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #7f40ff 0%, transparent 70%);
+  top: -10%;
+  left: -10%;
+}
+
+.blob-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #aa42ff 0%, transparent 70%);
+  top: 40%;
+  right: -15%;
+}
+
+.blob-3 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #5400ff 0%, transparent 70%);
+  bottom: -10%;
+  left: 30%;
+}
+
+.blob-4 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, #c481ff 0%, transparent 70%);
+  top: 20%;
+  left: 50%;
+}
+
+.blob-5 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+  top: 60%;
+  left: 10%;
+}
+
+@keyframes meshFloat1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(100px, 80px) scale(1.1);
+  }
+  66% {
+    transform: translate(-50px, 120px) scale(0.9);
+  }
+}
+
+@keyframes meshFloat2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-120px, -60px) scale(1.15);
+  }
+  66% {
+    transform: translate(60px, -100px) scale(0.85);
+  }
+}
+
+@keyframes meshFloat3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(80px, -100px) scale(1.05);
+  }
+  66% {
+    transform: translate(-100px, -50px) scale(1.1);
+  }
+}
+
+@keyframes meshFloat4 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-70px, 90px) scale(0.9);
+  }
+  66% {
+    transform: translate(90px, 40px) scale(1.1);
+  }
+}
+
+@keyframes meshFloat5 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(110px, -70px) scale(1.05);
+  }
+  66% {
+    transform: translate(-60px, 80px) scale(0.95);
+  }
+}

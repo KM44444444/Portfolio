@@ -11,6 +11,7 @@
   height: 100vh;
   box-sizing: border-box;
   will-change: transform;
+  margin-bottom: 0;
 }
 .work-container {
   margin: auto;
@@ -37,6 +38,7 @@
   flex-shrink: 0;
   gap: 30px;
   justify-content: start;
+  margin-right: 40px;
 }
 .work-flex .work-box:nth-child(even) {
   flex-direction: column-reverse;
@@ -226,6 +228,7 @@
   .work-box {
     width: 500px;
     padding: 40px;
+    margin-right: 30px;
   }
   .work-flex {
     margin-left: -50px;
@@ -235,10 +238,11 @@
     font-size: 50px;
   }
 }
-@media only screen and (max-width: 1400px) {
+@media only screen and (max-width: 1200px) {
   .work-box {
     width: 420px;
     padding: 30px;
+    margin-right: 25px;
   }
   .work-flex {
     margin-left: -30px;

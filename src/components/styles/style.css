@@ -1,18 +1,24 @@
 .hover-link {
   position: relative;
-  display: flex;
+  display: inline-flex;
   text-wrap: nowrap;
   overflow: hidden;
+  cursor: pointer;
 }
 .hover-in {
   position: relative;
   transition: 0.3s;
+  display: inline-flex;
 }
-.hover-in div {
-  display: flex;
+.hover-in span:first-child {
+  display: inline-block;
+}
+.hover-in span:last-child {
+  display: inline-flex;
   position: absolute;
   top: 100%;
   left: 0;
+  white-space: nowrap;
 }
 .hover-link:hover .hover-in {
   transform: translateY(-100%);
