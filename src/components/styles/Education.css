@@ -59,12 +59,13 @@
   gap: 60px;
   width: 100%;
   max-width: 1100px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .education-column {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .education-card {
@@ -186,8 +187,8 @@
 }
 
 .skills-tags-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 
