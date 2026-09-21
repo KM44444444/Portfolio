@@ -17,9 +17,9 @@ const Loading = ({ percent }: { percent: number }) => {
         setLoaded(true);
         const t2 = setTimeout(() => {
           setIsLoaded(true);
-        }, 1500);
+        }, 2000);
         return () => clearTimeout(t2);
-      }, 1000);
+      }, 1500);
       return () => clearTimeout(t1);
     }
   }, [percent]);
@@ -33,7 +33,7 @@ const Loading = ({ percent }: { percent: number }) => {
             module.initialFX();
           }
           setIsLoading(false);
-        }, 1500);
+        }, 2000);
       }
     });
   }, [isLoaded, setIsLoading]);
@@ -66,7 +66,7 @@ const Loading = ({ percent }: { percent: number }) => {
       </div>
       <div className="loading-screen">
         <div className="loading-marquee">
-          <Marquee>
+          <Marquee speed={120}>
             <span> Full-Stack Developer</span> <span>Software Developer</span>
             <span> Full-Stack Developer</span> <span>Software Developer</span>
           </Marquee>
