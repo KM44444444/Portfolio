@@ -3,13 +3,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
   {
     name: "DriveUK",
     category: "Travel & Vehicle Booking Platform",
-    tools: "React Native, Supabase, REST APIs",
+    tools: "React Native, REST APIs",
     description:
       "Built a long-distance travel booking application for routes between Delhi and Uttarakhand with separate driver and passenger workflows.",
     features: [
@@ -60,13 +60,13 @@ const Work = () => {
     function setTranslateX() {
       const box = document.getElementsByClassName("work-box");
       if (box.length === 0) return;
-      const rectLeft = document
-        .querySelector(".work-container")!
-        .getBoundingClientRect().left;
+      const workContainer = document.querySelector(".work-container");
+      if (!workContainer) return;
+      const rectLeft = workContainer.getBoundingClientRect().left;
       const rect = box[0].getBoundingClientRect();
-      const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
+      const parentWidth = box[0].parentElement?.getBoundingClientRect().width ?? 0;
       const padding: number =
-        parseInt(window.getComputedStyle(box[0]).padding) / 2;
+        parseFloat(window.getComputedStyle(box[0]).paddingLeft) || 0;
       translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
     }
 

@@ -17,7 +17,7 @@ const skillCategories = [
   },
   {
     title: "Database",
-    tags: ["SQL", "Supabase"],
+    tags: ["SQL", "PostgreSQL"],
   },
   {
     title: "Tools & Platforms",
@@ -35,20 +35,19 @@ const WhatIDo = () => {
     containerRef.current[index] = el;
   };
   useEffect(() => {
+    const handlers: (() => void)[] = [];
     if (ScrollTrigger.isTouch) {
       containerRef.current.forEach((container) => {
         if (container) {
           container.classList.remove("what-noTouch");
-          container.addEventListener("click", () => handleClick(container));
+          const handler = () => handleClick(container);
+          container.addEventListener("click", handler);
+          handlers.push(() => container.removeEventListener("click", handler));
         }
       });
     }
     return () => {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.removeEventListener("click", () => handleClick(container));
-        }
-      });
+      handlers.forEach((fn) => fn());
     };
   }, []);
   return (

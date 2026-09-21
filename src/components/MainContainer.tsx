@@ -27,11 +27,17 @@ const MainContainer = ({ children }: PropsWithChildren) => {
       setIsDesktopView(window.innerWidth > 1024);
     };
     resizeHandler();
-    window.addEventListener("resize", resizeHandler);
-    return () => {
-      window.removeEventListener("resize", resizeHandler);
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    const debouncedResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resizeHandler, 150);
     };
-  }, [isDesktopView]);
+    window.addEventListener("resize", debouncedResize);
+    return () => {
+      clearTimeout(resizeTimer);
+      window.removeEventListener("resize", debouncedResize);
+    };
+  }, []);
 
   return (
     <div className="container-main">

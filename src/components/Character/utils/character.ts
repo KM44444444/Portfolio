@@ -32,19 +32,17 @@ const setCharacter = (
   loader.setDRACOLoader(dracoLoader);
 
   const loadCharacter = () => {
-    return new Promise<GLTF | null>(async (resolve, reject) => {
-      try {
-        const encryptedBlob = await decryptFile(
-          "/models/character.enc",
-          "Character3D#@"
-        );
-        const blobUrl = URL.createObjectURL(new Blob([encryptedBlob]));
+    return new Promise<GLTF | null>((resolve, reject) => {
+      decryptFile("/models/character.enc", "Character3D#@")
+        .then((encryptedBlob) => {
+          const blobUrl = URL.createObjectURL(new Blob([encryptedBlob]));
 
-        let character: THREE.Object3D;
-        loader.load(
-          blobUrl,
-          async (gltf) => {
-            character = gltf.scene;
+          let character: THREE.Object3D;
+          loader.load(
+            blobUrl,
+            async (gltf) => {
+              URL.revokeObjectURL(blobUrl);
+              character = gltf.scene;
             await renderer.compileAsync(character, camera, scene);
 
             const byName: Record<string, THREE.Mesh> = {};
@@ -59,9 +57,7 @@ const setCharacter = (
               return undefined;
             }
 
-            console.log("Meshes:", Object.keys(byName));
-
-            // HAIR — Material[1] "Material.030" (baseColor [0.003, 0.003, 0.003])
+            // HAIR
             const hair = findMesh(["hair"]);
             if (hair) {
               hair.material = cloneAndTint(hair.material, COLORS.HAIR);
@@ -78,8 +74,6 @@ const setCharacter = (
             // FACE — Plane.007 is the face mesh (2047 verts, Material[0])
             const face = findMesh(["Plane.007", "Plane007"]);
             if (face) {
-              console.log("FACE groups:", face.geometry.groups);
-              console.log("FACE material:", (face.material as any)?.name);
               face.material = cloneAndTint(face.material, COLORS.SKIN);
             }
 
@@ -98,8 +92,6 @@ const setCharacter = (
             // SHIRT — BODY.SHIRT is the body/shirt mesh (4514 verts, Material[0])
             const body = findMesh(["BODY.SHIRT", "BODYSHIRT"]);
             if (body) {
-              console.log("BODY.SHIRT groups:", body.geometry.groups);
-              console.log("BODY.SHIRT material:", (body.material as any)?.name);
               body.material = cloneAndTint(body.material, COLORS.SHIRT);
             }
 
@@ -139,20 +131,24 @@ const setCharacter = (
             resolve(gltf);
             setCharTimeline(character, camera);
             setAllTimeline();
-            character!.getObjectByName("footR")!.position.y = 3.36;
-            character!.getObjectByName("footL")!.position.y = 3.36;
+            const footR = character.getObjectByName("footR");
+            const footL = character.getObjectByName("footL");
+            if (footR) footR.position.y = 3.36;
+            if (footL) footL.position.y = 3.36;
             dracoLoader.dispose();
           },
           undefined,
           (error) => {
+            URL.revokeObjectURL(blobUrl);
             console.error("Error loading GLTF model:", error);
             reject(error);
           }
         );
-      } catch (err) {
-        reject(err);
-        console.error(err);
-      }
+        })
+        .catch((err) => {
+          reject(err);
+          console.error(err);
+        });
     });
   };
 

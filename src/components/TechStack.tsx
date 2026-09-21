@@ -194,20 +194,26 @@ const TechStack = () => {
       const threshold = workEl.getBoundingClientRect().top;
       setIsActive(scrollY > threshold);
     };
+
+    const clickCleanups: (() => void)[] = [];
     document.querySelectorAll(".header a").forEach((elem) => {
       const element = elem as HTMLAnchorElement;
-      element.addEventListener("click", () => {
+      const onClick = () => {
         const interval = setInterval(() => {
           handleScroll();
         }, 10);
         setTimeout(() => {
           clearInterval(interval);
         }, 1000);
-      });
+      };
+      element.addEventListener("click", onClick);
+      clickCleanups.push(() => element.removeEventListener("click", onClick));
     });
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      clickCleanups.forEach((fn) => fn());
     };
   }, []);
 
