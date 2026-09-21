@@ -65,6 +65,7 @@ const interests = [
   "Drawing",
   "Cricket",
   "Anime",
+  "Read Manga",
 ];
 
 const Education = () => {
