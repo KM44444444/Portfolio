@@ -98,6 +98,23 @@ const Education = () => {
                 </div>
               </div>
             ))}
+            <h3 className="section-subtitle" style={{ marginTop: "40px" }}>
+              Idols
+            </h3>
+            <div className="idols-container">
+              <div className="idol-card">
+                <span className="idol-emoji">⚽</span>
+                <span className="idol-name">Cristiano Ronaldo</span>
+              </div>
+              <div className="idol-card">
+                <span className="idol-emoji">💻</span>
+                <span className="idol-name">Myself</span>
+              </div>
+              <div className="idol-card">
+                <span className="idol-emoji">📚</span>
+                <span className="idol-name">My Teachers</span>
+              </div>
+            </div>
           </div>
 
           <div className="education-column">
