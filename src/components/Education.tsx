@@ -60,7 +60,9 @@ const interests = [
   "Full-Stack Development",
   "Artificial Intelligence",
   "Open Source",
-  "Mobile App Development",
+  "Music Listening",
+  "Kabbadi",
+  "Drawing",
   "Cricket",
   "Anime",
 ];
