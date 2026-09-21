@@ -211,6 +211,106 @@
   border-color: rgba(194, 164, 255, 0.2);
 }
 
+.suggestion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.suggestion-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.suggestion-form .form-group label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accentColor);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.suggestion-form .form-group input,
+.suggestion-form .form-group textarea {
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-family: inherit;
+  transition: 0.3s ease;
+  outline: none;
+  resize: vertical;
+}
+
+.suggestion-form .form-group input:focus,
+.suggestion-form .form-group textarea:focus {
+  border-color: var(--accentColor);
+  background: rgba(127, 64, 255, 0.05);
+}
+
+.suggestion-form .form-group input::placeholder,
+.suggestion-form .form-group textarea::placeholder {
+  color: #666;
+}
+
+.suggestion-form .submit-btn {
+  padding: 12px 24px;
+  background: var(--accentColor);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.suggestion-form .submit-btn:hover {
+  background: #6b30e0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(127, 64, 255, 0.3);
+}
+
+.suggestion-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(127, 64, 255, 0.3);
+  border-radius: 14px;
+  text-align: center;
+}
+
+.suggestion-success .success-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accentColor);
+  border-radius: 50%;
+  font-size: 24px;
+  color: #fff;
+}
+
+.suggestion-success h4 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.suggestion-success p {
+  font-size: 14px;
+  color: #999;
+}
+
 .languages-container {
   display: flex;
   flex-direction: column;

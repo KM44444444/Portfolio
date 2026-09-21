@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./styles/Education.css";
 
 const educationData = [
@@ -68,6 +69,8 @@ const interests = [
 ];
 
 const Education = () => {
+  const [submitted, setSubmitted] = useState(false);
+
   return (
     <div className="education-section section-container" id="education">
       <div className="education-container">
@@ -134,6 +137,38 @@ const Education = () => {
                 </span>
               ))}
             </div>
+
+            <h3 className="section-subtitle" style={{ marginTop: "40px" }}>
+              Suggestion & Feedback
+            </h3>
+            {submitted ? (
+              <div className="suggestion-success">
+                <span className="success-icon">✓</span>
+                <h4>Thank you!</h4>
+                <p>Your suggestion has been submitted successfully.</p>
+              </div>
+            ) : (
+              <form
+                className="suggestion-form"
+                action="https://formspree.io/f/YOUR_FORM_ID"
+                method="POST"
+                onSubmit={() => setSubmitted(true)}
+              >
+                <div className="form-group">
+                  <label htmlFor="name">Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your name" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <input type="email" id="email" name="email" placeholder="Your email" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="suggestion">Your Suggestion</label>
+                  <textarea id="suggestion" name="suggestion" placeholder="Write your suggestion or feedback here..." rows={4} required />
+                </div>
+                <button type="submit" className="submit-btn">Submit Suggestion</button>
+              </form>
+            )}
           </div>
         </div>
 
