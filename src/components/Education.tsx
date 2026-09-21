@@ -57,7 +57,6 @@ const languages = [
 ];
 
 const interests = [
-  "Full-Stack Development",
   "Artificial Intelligence",
   "Open Source",
   "Music Listening",
