@@ -64,7 +64,7 @@ const interests = [
   "Kabbadi",
   "Drawing",
   "Cricket",
-  "Anime",
+  "Watching Anime",
   "Read Manga",
 ];
 
