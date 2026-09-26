@@ -37,18 +37,18 @@ const projects = [
     ],
   },
   {
-    name: "AgriMitrr",
-    category: "Smart Agricultural Advisory",
-    tools: "AI, Data, Web technologies",
+    name: "Green & Clean",
+    category: "Smart Waste Management",
+    tools:
+      "React, TypeScript, Vite, Tailwind CSS, shadcn/ui, React Query, Node.js, Express, Google Cloud Vision API",
     description:
-      "Conceptualized an agricultural advisory platform designed to help farmers make better decisions through technology and AI-powered recommendations.",
+      "Built for Smart India Hackathon 2026, Green & Clean lets citizens report garbage spots with geo-tagged photos, alerts municipal workers for cleanup, and rewards contributions through a redeemable Green Wallet.",
     features: [
-      "Soil and crop suitability",
-      "Weather-based recommendations",
-      "Pest and disease detection",
-      "Multilingual support",
-      "SMS/IVR fallback",
-      "Market-linkage capabilities",
+      "Geo-tagged waste reports",
+      "Municipal worker alerts",
+      "Redeemable Green Wallet points",
+      "Citizen, worker, and admin dashboards",
+      "Cleanup analytics and gamification",
     ],
   },
 ];
