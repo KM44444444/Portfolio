@@ -109,6 +109,11 @@
   border-radius: 20px;
   color: var(--accentColor);
 }
+.work-project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
 .work-live-link {
   display: inline-block;
   margin-top: 14px;

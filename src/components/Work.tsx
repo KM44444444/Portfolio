@@ -24,10 +24,16 @@ const projects = [
   {
     name: "NeuroDefender",
     category: "Adversarial Attack Detection System",
-    projectLink: {
-      url: "https://github.com/KM44444444/Neuro-Defender",
-      label: "View GitHub repository",
-    },
+    projectLinks: [
+      {
+        url: "https://neuro-defender-jg856owmp-my-own-team9.vercel.app/",
+        label: "View live project",
+      },
+      {
+        url: "https://github.com/KM44444444/Neuro-Defender",
+        label: "View GitHub repository",
+      },
+    ],
     tools: "React, Vite, Tailwind CSS, FastAPI, Python, PyTorch, NumPy, SciPy, Pillow",
     description:
       "An enterprise-grade adversarial attack detection dashboard with image forensics and text analysis, built with a React/Vite frontend and FastAPI backend.",
@@ -42,10 +48,12 @@ const projects = [
   {
     name: "Green & Clean",
     category: "Smart Waste Management",
-    projectLink: {
-      url: "https://green-clean-sigma.vercel.app/",
-      label: "View live project",
-    },
+    projectLinks: [
+      {
+        url: "https://green-clean-sigma.vercel.app/",
+        label: "View live project",
+      },
+    ],
     tools:
       "React, TypeScript, Vite, Tailwind CSS, shadcn/ui, React Query, Node.js, Express, Google Cloud Vision API",
     description:
@@ -128,15 +136,20 @@ const Work = () => {
                     </span>
                   ))}
                 </div>
-                {"projectLink" in project && (
-                  <a
-                    className="work-live-link"
-                    href={project.projectLink.url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {project.projectLink.label} ↗
-                  </a>
+                {"projectLinks" in project && (
+                  <div className="work-project-links">
+                    {project.projectLinks.map((link) => (
+                      <a
+                        className="work-live-link"
+                        href={link.url}
+                        key={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {link.label} ↗
+                      </a>
+                    ))}
+                  </div>
                 )}
               </div>
               <div className="work-placeholder">
