@@ -53,6 +53,10 @@ const projects = [
         url: "https://green-clean-sigma.vercel.app/",
         label: "View live project",
       },
+      {
+        url: "https://github.com/KM44444444/Green-Clean",
+        label: "View GitHub repository",
+      },
     ],
     tools:
       "React, TypeScript, Vite, Tailwind CSS, shadcn/ui, React Query, Node.js, Express, Google Cloud Vision API",
