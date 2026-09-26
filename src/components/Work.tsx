@@ -136,7 +136,7 @@ const Work = () => {
                     </span>
                   ))}
                 </div>
-                {"projectLinks" in project && (
+                {"projectLinks" in project && project.projectLinks && (
                   <div className="work-project-links">
                     {project.projectLinks.map((link) => (
                       <a
