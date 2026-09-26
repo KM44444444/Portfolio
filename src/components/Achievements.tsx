@@ -1,4 +1,5 @@
 import "./styles/Achievements.css";
+import { SiGeeksforgeeks, SiHackerrank } from "react-icons/si";
 
 const achievements = [
   {
@@ -70,7 +71,7 @@ const Achievements = () => {
         <h3 className="stats-heading" id="coding-profiles">Coding Profiles</h3>
         <div className="stats-row">
           <div className="stats-column">
-            <h3 className="leetcode-title">LeetCode Stats</h3>
+            <h3 className="leetcode-title">Coding Platforms</h3>
             <a
               href="https://leetcode.com/u/KM44444444/"
               target="_blank"
@@ -95,6 +96,44 @@ const Achievements = () => {
                   <span className="leetcode-username">KM44444444</span>
                 </div>
                 <div className="leetcode-arrow">→</div>
+              </div>
+            </a>
+            <a
+              href="https://www.geeksforgeeks.org/profile/hemlatalwl5?tab=activity"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="leetcode-card"
+              data-cursor="disable"
+            >
+              <div className="leetcode-card-content">
+                <div className="leetcode-icon">
+                  <SiGeeksforgeeks size={32} aria-hidden="true" />
+                </div>
+                <div className="leetcode-info">
+                  <h4>GeeksforGeeks Profile</h4>
+                  <p>Explore practice activity and problem-solving progress</p>
+                  <span className="leetcode-username">hemlatalwl5</span>
+                </div>
+                <div className="leetcode-arrow" aria-hidden="true">→</div>
+              </div>
+            </a>
+            <a
+              href="https://www.hackerrank.com/profile/hemlatatiz32"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="leetcode-card"
+              data-cursor="disable"
+            >
+              <div className="leetcode-card-content">
+                <div className="leetcode-icon">
+                  <SiHackerrank size={32} aria-hidden="true" />
+                </div>
+                <div className="leetcode-info">
+                  <h4>HackerRank Profile</h4>
+                  <p>View skills, certifications, and coding challenges</p>
+                  <span className="leetcode-username">hemlatatiz32</span>
+                </div>
+                <div className="leetcode-arrow" aria-hidden="true">→</div>
               </div>
             </a>
           </div>
