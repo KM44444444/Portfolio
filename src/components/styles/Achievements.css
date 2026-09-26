@@ -270,6 +270,14 @@
   margin-bottom: 8px;
 }
 
+.stats-column:last-child {
+  gap: 16px;
+}
+
+.stats-column:last-child .leetcode-title {
+  margin-bottom: 8px;
+}
+
 .github-graph-container {
   width: 100%;
   padding: 20px;

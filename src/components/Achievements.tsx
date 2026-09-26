@@ -117,6 +117,17 @@ const Achievements = () => {
                 <div className="leetcode-arrow" aria-hidden="true">→</div>
               </div>
             </a>
+          </div>
+
+          <div className="stats-column">
+            <h3 className="leetcode-title">GitHub Activity</h3>
+            <div className="github-graph-container">
+              <img
+                src="https://ghchart.rshah.org/KM44444444"
+                alt="GitHub Contribution Graph"
+                className="github-graph"
+              />
+            </div>
             <a
               href="https://www.hackerrank.com/profile/hemlatatiz32"
               target="_blank"
@@ -136,17 +147,6 @@ const Achievements = () => {
                 <div className="leetcode-arrow" aria-hidden="true">→</div>
               </div>
             </a>
-          </div>
-
-          <div className="stats-column">
-            <h3 className="leetcode-title">GitHub Activity</h3>
-            <div className="github-graph-container">
-              <img
-                src="https://ghchart.rshah.org/KM44444444"
-                alt="GitHub Contribution Graph"
-                className="github-graph"
-              />
-            </div>
           </div>
         </div>
 
