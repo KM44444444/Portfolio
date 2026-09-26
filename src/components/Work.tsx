@@ -22,24 +22,30 @@ const projects = [
     ],
   },
   {
-    name: "TalentDash",
-    category: "Talent Intelligence Dashboard",
-    tools: "React, TypeScript, Vite, Node.js, Express, PostgreSQL, Drizzle ORM",
+    name: "NeuroDefender",
+    category: "Adversarial Attack Detection System",
+    projectLink: {
+      url: "https://github.com/KM44444444/Neuro-Defender",
+      label: "View GitHub repository",
+    },
+    tools: "React, Vite, Tailwind CSS, FastAPI, Python, PyTorch, NumPy, SciPy, Pillow",
     description:
-      "Built a full-stack talent intelligence dashboard with a React and TypeScript frontend and a Node.js/Express backend.",
+      "A security dashboard for analyzing images and text for adversarial patterns, with forensic scores, threat levels, and scan activity.",
     features: [
-      "React + TypeScript frontend",
-      "Node.js/Express backend",
-      "PostgreSQL database",
-      "Drizzle ORM",
-      "Type-safe data access layer",
-      "REST APIs",
+      "Image attack detection",
+      "Text threat analysis",
+      "Image forensic scoring",
+      "Text anomaly and Unicode checks",
+      "Threat scoring and activity feed",
     ],
   },
   {
     name: "Green & Clean",
     category: "Smart Waste Management",
-    liveUrl: "https://green-clean-sigma.vercel.app/",
+    projectLink: {
+      url: "https://green-clean-sigma.vercel.app/",
+      label: "View live project",
+    },
     tools:
       "React, TypeScript, Vite, Tailwind CSS, shadcn/ui, React Query, Node.js, Express, Google Cloud Vision API",
     description:
@@ -122,14 +128,14 @@ const Work = () => {
                     </span>
                   ))}
                 </div>
-                {"liveUrl" in project && (
+                {"projectLink" in project && (
                   <a
                     className="work-live-link"
-                    href={project.liveUrl}
+                    href={project.projectLink.url}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    View live project ↗
+                    {project.projectLink.label} ↗
                   </a>
                 )}
               </div>
