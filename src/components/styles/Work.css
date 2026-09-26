@@ -109,6 +109,17 @@
   border-radius: 20px;
   color: var(--accentColor);
 }
+.work-live-link {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--accentColor);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.work-live-link:hover {
+  color: #fff;
+}
 
 .work-placeholder {
   display: flex;

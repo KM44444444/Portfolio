@@ -39,6 +39,7 @@ const projects = [
   {
     name: "Green & Clean",
     category: "Smart Waste Management",
+    liveUrl: "https://green-clean-sigma.vercel.app/",
     tools:
       "React, TypeScript, Vite, Tailwind CSS, shadcn/ui, React Query, Node.js, Express, Google Cloud Vision API",
     description:
@@ -121,6 +122,16 @@ const Work = () => {
                     </span>
                   ))}
                 </div>
+                {"liveUrl" in project && (
+                  <a
+                    className="work-live-link"
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View live project ↗
+                  </a>
+                )}
               </div>
               <div className="work-placeholder">
                 <div className="work-placeholder-inner">
