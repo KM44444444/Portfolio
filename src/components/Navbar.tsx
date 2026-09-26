@@ -10,7 +10,7 @@ export let smoother: ScrollSmoother;
 
 const Navbar = () => {
   useEffect(() => {
-    smoother = ScrollSmoother.create({
+    const scrollSmoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
       smooth: 1.7,
@@ -19,17 +19,18 @@ const Navbar = () => {
       autoResize: true,
       ignoreMobileResize: true,
     });
+    smoother = scrollSmoother;
 
-    smoother.scrollTop(0);
-    smoother.paused(true);
+    scrollSmoother.scrollTop(0);
+    scrollSmoother.paused(true);
 
     const handleLinkClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       const link = target.closest("a[data-href]") as HTMLAnchorElement;
-      if (link && window.innerWidth > 1024) {
-        e.preventDefault();
+      if (link) {
         const section = link.getAttribute("data-href");
-        if (section) {
+        if (section && smoother) {
+          e.preventDefault();
           smoother.paused(false);
           smoother.scrollTo(section, true, "top 150px");
         }
