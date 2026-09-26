@@ -30,7 +30,7 @@ const projects = [
     },
     tools: "React, Vite, Tailwind CSS, FastAPI, Python, PyTorch, NumPy, SciPy, Pillow",
     description:
-      "A security dashboard for analyzing images and text for adversarial patterns, with forensic scores, threat levels, and scan activity.",
+      "An enterprise-grade adversarial attack detection dashboard with image forensics and text analysis, built with a React/Vite frontend and FastAPI backend.",
     features: [
       "Image attack detection",
       "Text threat analysis",
